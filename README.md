@@ -1,13 +1,13 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-06-05 17:56:01
+ * @LastEditTime: 2021-06-10 09:09:06
  * @Description: just Code!
 -->
 
 # freeCodeCamp-Record
 
-don't say so much,just show my code.
+don't say so much, just show my code.
 
 [freeCodeCamp-github](https://github.com/freeCodeCamp/freeCodeCamp)
 
@@ -19,5 +19,8 @@ don't say so much,just show my code.
 
 ### [Applied Visual Design](./Notes/Applied-Visual-Design.md)
 
-## JavaScript Algorithms and Data Structures
+## JavaScript Algorithms and Data Structures 
 
+Files ==> [JS-AADS](./Notes/JS-AADS)
+
+### [ES6](./Notes/JS-AADS/ES6.md)
