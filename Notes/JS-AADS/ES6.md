@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-10 08:51:55
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-06-10 16:27:49
+ * @LastEditTime: 2021-06-11 02:02:57
  * @Description: ES6新特性
 -->
 
@@ -184,7 +184,7 @@ const increment = (number, value = 1) => number + value;
 // Only change code above this line
 ```
 
-### Rest参数的使用 箭头函数
+### Rest操作符的使用 箭头函数
 
 > 样例
 
@@ -306,7 +306,7 @@ let a = 8,
 
 ### Use Destructuring Assignment with the Rest Parameter to Reassign Array Elements
 
-利用上Rest参数，来获取子数组。
+利用上Rest操作符，来获取子数组。
 
 ```javascript
 const source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -338,4 +338,301 @@ const half = ({
     min
 }) => (max + min) / 2.0;
 // Only change code above this line
+```
+
+### 使用模板字面量创建字符串
+
+模板字符串可以使用多行字符串和字符串插值功能。 轻松构建复杂字符串！
+
+```javascript
+const result = {
+    success: ["max-length", "no-amd", "prefer-arrow-functions"],
+    failure: ["no-var", "var-on-top", "linebreak"],
+    skipped: ["no-extra-semi", "no-dup-keys"]
+};
+
+function makeList(arr) {
+    // Only change code below this line
+    const failureItems = [];
+    for (let i = 0; i < arr.length; ++i) {
+        failureItems.push(`<li class="text-warning">${arr[i]}</li>`)
+    }
+    // Only change code above this line
+
+    return failureItems;
+}
+
+const failuresList = makeList(result.failure);
+```
+
+### Write Concise Object Literal Declarations Using Object Property Shorthand
+
+例如：
+
+```javascript
+const getMousePosition = (x, y) => ({
+    x: x,
+    y: y
+});
+
+// 更简洁的写法
+const getMousePosition = (x, y) => ({
+    x,
+    y
+});
+```
+
+> 样例  语法糖
+
+```javascript
+const createPerson = (name, age, gender) => {
+    // Only change code below this line
+    return {
+        name,
+        age,
+        gender
+    };
+    // Only change code above this line
+};
+```
+
+### Write Concise Declarative Functions with ES6
+
+> 样例 省略了function关键字
+
+```javascript
+// Only change code below this line
+const bicycle = {
+    gear: 2,
+    setGear(newGear) {
+        this.gear = newGear;
+    }
+};
+// Only change code above this line
+bicycle.setGear(3);
+console.log(bicycle.gear);
+```
+
+### Use class Syntax to Define a Constructor Function
+
+用 `class` 创建类，constructor初始化。
+
+> 样例 
+
+```javascript
+// Only change code below this line
+class Vegetable {
+    constructor(name) {
+        this.name = name;
+    }
+}
+// Only change code above this line
+
+const carrot = new Vegetable('carrot');
+console.log(carrot.name); // Should display 'carrot'
+```
+
+### Use getters and setters to Control Access to an Object
+
+get / set 
+
+> 样例
+
+```javascript
+// Only change code below this line
+class Thermostat {
+    constructor(fahrenheit) {
+        this.fahrenheit = fahrenheit;
+    }
+    get temperature() {
+        return (5 / 9) * (this.fahrenheit - 32);
+    }
+    set temperature(celsius) {
+        this.fahrenheit = (celsius * 9.0) / 5 + 32;
+    }
+}
+// Only change code above this line
+
+const thermos = new Thermostat(76); // Setting in Fahrenheit scale
+let temp = thermos.temperature; // 24.44 in Celsius
+thermos.temperature = 26;
+temp = thermos.temperature; // 26 in Celsius
+```
+
+### module script
+
+脚本导入
+
+> 样例
+
+```html
+<html>
+
+<body>
+    <!-- Only change code below this line -->
+    <script type="module" src="index.js"></script>
+    <!-- Only change code above this line -->
+</body>
+
+</html>
+```
+
+### Use export to Share a Code Block
+
+能将函数的使用范围扩大，能不用编写重复功能的代码。
+
+```javascript
+const uppercaseString = (string) => {
+    return string.toUpperCase();
+}
+
+const lowercaseString = (string) => {
+    return string.toLowerCase()
+}
+
+export {
+    uppercaseString,
+    lowercaseString
+}
+```
+
+### Reuse JavaScript Code Using import
+
+```javascript
+import {
+    uppercaseString,
+    lowercaseString
+} from './string_functions.js';
+// Only change code above this line
+
+uppercaseString("hello");
+lowercaseString("WORLD!");
+```
+
+### Use * to Import Everything from a File
+
+```javascript
+import * as stringFunctions from "./string_functions.js";
+// Only change code above this line
+
+stringFunctions.uppercaseString("hello");
+stringFunctions.lowercaseString("WORLD!");
+```
+
+### Create an Export Fallback with export default
+
+```javascript
+export default function subtract(x, y) {
+    return x - y;
+}
+```
+
+### Import a Default Export
+
+导入有默认导出函数时可以自定义该函数的别名。
+
+```javascript
+import subtract from "./math_functions.js";
+// Only change code above this line
+
+subtract(7, 4);
+```
+
+### Create a JavaScript Promise
+
+A promise in JavaScript is exactly what it sounds like - you use it to make a promise to do something, usually asynchronously. When the task completes, you either fulfill your promise or fail to do so. Promise is a constructor function, so you need to use the new keyword to create one. It takes a function, as its argument, with two parameters - resolve and reject. These are methods used to determine the outcome of the promise. The syntax looks like this:
+
+```javascript
+const myPromise = new Promise((resolve, reject) => {
+
+});
+```
+
+> 样例
+
+```javascript
+const makeServerRequest = new Promise((resolve, reject) => {});
+```
+
+### Complete a Promise with resolve and reject
+
+A promise has three states: pending, fulfilled, and rejected. The promise you created in the last challenge is forever stuck in the pending state because you did not add a way to complete the promise. The resolve and reject parameters given to the promise argument are used to do this. resolve is used when you want your promise to succeed, and reject is used when you want it to fail. These are methods that take an argument, as seen below.
+
+> 样例
+
+```javascript
+const makeServerRequest = new Promise((resolve, reject) => {
+    // responseFromServer represents a response from a server
+    let responseFromServer;
+
+    if (responseFromServer) {
+        resolve("We got the data");
+    } else {
+        reject("Data not received");
+    }
+});
+```
+
+### Handle a Fulfilled Promise with then
+
+Promises are most useful when you have a process that takes an unknown amount of time in your code (i.e. something asynchronous), often a server request. When you make a server request it takes some amount of time, and after it completes you usually want to do something with the response from the server. This can be achieved by using the then method. The then method is executed immediately after your promise is fulfilled with resolve. Here’s an example:
+
+```javascript
+myPromise.then(result => {
+
+});
+```
+
+result comes from the argument given to the resolve method.
+
+> 样例
+
+```javascript
+const makeServerRequest = new Promise((resolve, reject) => {
+    // responseFromServer is set to true to represent a successful response from a server
+    let responseFromServer = true;
+
+    if (responseFromServer) {
+        resolve("We got the data");
+        makeServerRequest.then(result => {
+            console.log(result);
+        });
+    } else {
+        reject("Data not received");
+    }
+});
+```
+
+### Handle a Rejected Promise with catch
+
+catch is the method used when your promise has been rejected. It is executed immediately after a promise's reject method is called. Here’s the syntax:
+
+```javascript
+myPromise.catch(error => {
+
+});
+```
+
+error is the argument passed in to the reject method.
+
+> 样例
+
+```javascript
+const makeServerRequest = new Promise((resolve, reject) => {
+    // responseFromServer is set to false to represent an unsuccessful response from a server
+    let responseFromServer = false;
+
+    if (responseFromServer) {
+        resolve("We got the data");
+    } else {
+        reject("Data not received");
+        makeServerRequest.catch(error => {
+            console.log(error);
+        })
+    }
+});
+
+makeServerRequest.then(result => {
+    console.log(result);
+});
 ```
