@@ -43,7 +43,7 @@
 ### 6. font-family 属性 设置字体样式
 
 ```html
-<styl>
+<style>
   p {
     font-family: monospace;
   }
@@ -61,7 +61,7 @@
   type="text/css"
 />
 
-<styl> h2 { font-family: Lobster; } </styl>
+<style> h2 { font-family: Lobster; } </style>
 ```
 
 字体引用的样式有空格的需要加上双引号进行引用.
