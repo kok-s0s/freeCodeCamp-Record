@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-14 01:58:42
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-06-18 20:32:42
+ * @LastEditTime: 2021-06-19 17:45:31
  * @Description: 正则表达式
 -->
 
@@ -334,4 +334,246 @@ shortHand.test(varNames);
 let quoteSample = "The five boxing wizards jump quickly.";
 let alphabetRegexV2 = /\w/g; // Change this line
 let result = quoteSample.match(alphabetRegexV2).length;
+```
+
+### 19. 匹配除字母和数字以外的所有内容
+
+`\W` 是 `\w` 的反义词 --- `[^A-Za-z0-9_]`
+
+示例
+
+```javascript
+let shortHand = /\W/;
+let numbers = "42%";
+let sentence = "Coding!";
+numbers.match(shortHand);
+// %
+sentence.match(shortHand);
+// !
+```
+
+```javascript
+let quoteSample = "The five boxing wizards jump quickly.";
+let nonAlphabetRegex = /\W/g; // Change this line
+let result = quoteSample.match(nonAlphabetRegex).length;
+```
+
+### 20. 匹配所有数字
+
+`\d` === `[0-9]`
+
+```javascript
+let movieName = "2001: A Space Odyssey";
+let numRegex = /\d/g; // Change this line
+let result = movieName.match(numRegex).length;
+```
+
+### 21. 匹配所有非数字
+
+`\D` === `[^0-9]`
+
+```javascript
+let movieName = "2001: A Space Odyssey";
+let noNumRegex = /\D/g; // Change this line
+let result = movieName.match(noNumRegex).length;
+```
+
+### 22. 限制可能的用户名
+
+```javascript
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z][a-z]+\d*$|^[a-z]\d\d+$/i;
+let result = userCheck.test(username);
+console.log(result)
+```
+
+Code Explanation
+1. `^` - start of input
+2. `[a-z]` - first character is a letter
+3. `[a-z]+` - following characters are letters
+4. `\d*$` - input ends with 0 or more digits
+5. `|` - or
+6. `^[a-z]` - first character is a letter
+7. `\d\d+` - following characters are 2 or more digits
+8. `$` - end of input
+
+### 23. 匹配空白
+
+> You can search for whitespace using `\s` , which is a lowercase `s` . This pattern not only matches whitespace, but also carriage return, tab, form feed, and new line characters. You can think of it as similar to the character class `[ \r\t\f\n\v]` .
+
+```javascript
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result = sample.match(countWhiteSpace);
+```
+
+### 24. 匹配非空白字符
+
+> Search for non-whitespace using `\S` , which is an uppercase s. This pattern will not match whitespace, carriage return, tab, form feed, and new line characters. You can think of it being similar to the character class `[^ \r\t\f\n\v]` .
+
+```javascript
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g; // Change this line
+let result = sample.match(countNonWhiteSpace);
+```
+
+### 25. 指定匹配的上限和下限数
+
+示例
+
+```javascript
+let A4 = "aaaah";
+let A2 = "aah";
+let multipleA = /a{3,5}h/;
+multipleA.test(A4);
+// true
+multipleA.test(A2);
+// false
+```
+
+```javascript
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6} no/g; // Change this line
+let result = ohRegex.test(ohStr);
+```
+
+### 26. 仅指定较低的匹配数
+
+```javascript
+let A4 = "haaaah";
+let A2 = "haah";
+let A100 = "h" + "a".repeat(100) + "h";
+let multipleA = /ha{3,}h/;
+multipleA.test(A4);
+// true
+multipleA.test(A2);
+// false
+multipleA.test(A100);
+// true
+```
+
+```javascript
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/; // Change this line
+let result = haRegex.test(haStr);
+```
+
+### 27. 指定确切的匹配数
+
+示例
+
+```javascript
+let A4 = "haaaah";
+let A3 = "haaah";
+let A100 = "h" + "a".repeat(100) + "h";
+let multipleHA = /ha{3}h/;
+multipleHA.test(A4);
+// false
+multipleHA.test(A3);
+// true
+multipleHA.test(A100);
+// false
+```
+
+```javascript
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result = timRegex.test(timStr);
+```
+
+### 28. 检查全部或无
+
+示例
+
+```javascript
+let american = "color";
+let british = "colour";
+let rainbowRegex = /colou?r/;
+rainbowRegex.test(american);
+// true
+rainbowRegex.test(british);
+// true
+```
+
+```javascript
+let favWord = "favorite";
+let favRegex = /favou?rite/; // Change this line
+let result = favRegex.test(favWord);
+```
+
+### 29. Positive and Negative Lookahead
+
+示例
+
+```javascript
+let quit = "qu";
+let noquit = "qt";
+let quRegex = /q(?=u)/;
+let qRegex = /q(?!u)/;
+quit.match(quRegex);
+// ["q"]
+noquit.match(qRegex);
+// ["q"]
+```
+
+```javascript
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{6})(?=\w*\d{2})/; // Change this line
+let result = pwRegex.test(sampleWord);
+```
+
+### 30. 检查字符的混合分组
+
+示例
+
+```javascript
+let testStr = "Pumpkin";
+let testRegex = /P(engu|umpk)in/;
+testRegex.test(testStr);
+// true
+```
+
+```javascript
+let myString = "Eleanor Roosevelt";
+let myRegex = /(Eleanor|Franklin).*Roosevelt/g; // Change this line
+let result = myRegex.test(myString); // Change this line
+// After passing the challenge experiment with myString and see how the grouping works
+```
+
+### 31. 使用捕获组重用模式
+
+示例
+
+```javascript
+let repeatStr = "regex regex";
+let repeatRegex = /(\w+)\s\1/;
+repeatRegex.test(repeatStr);
+// true
+repeatStr.match(repeatRegex);
+// ["regex regex", "regex"]
+```
+
+```javascript
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
+let result = reRegex.test(repeatNum);
+```
+
+### 32. 使用捕获组进行搜索和替换
+
+![](./../../images/00001.png)
+
+```javascript
+let str = "one two three";
+let fixRegex = /(\w+)\s(\w+)\s(\w+)/; // Change this line
+let replaceText = "$3 $2 $1"; // Change this line
+let result = str.replace(fixRegex, replaceText);
+```
+
+### 33. 从开头和结尾删除空格
+
+```javascript
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+|\s+$/g; // Change this line
+let result = hello.replace(wsRegex, ""); // Change this line
 ```
