@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-06-24 17:08:33
+ * @LastEditTime: 2021-06-24 17:09:29
  * @Description: Summary
 -->
 
@@ -43,5 +43,7 @@
 * `( | )` 混合分组
 
 ## debugging
+
+[记录文件](./JS-AADS/Debugging.md)
 
 总结：注意大小写，注意括号，注意拼写，注意规范，注意函数的正确写法及调用，避免死循环，注意索引使用，注意等价符号与复制符号的区别，注意变量的类型。总之，实战出bug就多想多尝试。
