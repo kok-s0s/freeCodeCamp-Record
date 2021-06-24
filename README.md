@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-06-20 13:26:24
+ * @LastEditTime: 2021-06-24 17:05:37
  * @Description: just Code!
 -->
 
@@ -27,4 +27,8 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 
 ### [ES6](./Notes/JS-AADS/ES6.md)
 
-## [Regular Expressions](./Notes/JS-AADS/Regular-Expressions.md)
+### [Regular Expressions](./Notes/JS-AADS/Regular-Expressions.md)
+
+### [Debugging](./Notes/JS-AADS/Debugging.md)
+
+### [Basic Data Structures](./Notes/JS-AADS/Basic-Data-Structure.md)
