@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-06-24 17:09:29
+ * @LastEditTime: 2021-06-25 15:51:24
  * @Description: Summary
 -->
 
@@ -47,3 +47,31 @@
 [记录文件](./JS-AADS/Debugging.md)
 
 总结：注意大小写，注意括号，注意拼写，注意规范，注意函数的正确写法及调用，避免死循环，注意索引使用，注意等价符号与复制符号的区别，注意变量的类型。总之，实战出bug就多想多尝试。
+
+## Basic-Data-Structures
+
+[记录文件](./JS-AADS/Basic-Data-Structures.md)
+
+几个函数方法：
+* push()
+* unshift()
+* pop()
+* shift()
+* splice()
+* slice()
+* Object.keys()
+* indexOf()
+* hasOwnProperty()
+
+特殊符号
+
+* `...`
+
+语句
+* for
+* for in
+
+关键字
+* delete
+
+以及各种对数组，对象，键值对的操作。读，写，删，更改等等
