@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-06-25 15:51:24
+ * @LastEditTime: 2021-06-30 15:38:44
  * @Description: Summary
 -->
 
@@ -75,3 +75,8 @@
 * delete
 
 以及各种对数组，对象，键值对的操作。读，写，删，更改等等
+
+## Basic-Algorithm-Scripting
+
+就一些JavaScript的代码练习，算是个温故知新了。
+
