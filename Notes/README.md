@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-06-30 15:38:44
+ * @LastEditTime: 2021-07-06 22:46:21
  * @Description: Summary
 -->
 
@@ -79,4 +79,24 @@
 ## Basic-Algorithm-Scripting
 
 就一些JavaScript的代码练习，算是个温故知新了。
+
+## Object-Oriented-Programming
+
+* 学会如何构造一个对象
+* 对象的访问
+* 对象的方法
+* 对象方法的重用---this的使用
+* 构造函数
+* 对象相关的函数或属性
+  + instanceof
+  + hasOwnProperty
+  + constructor
+  + isPrototypeOf
+  + prototype
+* 原型属性的使用
+* DRY原则---不要重复你自己
+* 对象的继承
+* Mixin的使用，让多个不同对象有相同的方法
+* 闭包的使用---使用闭包保护对象内的属性不被外部修改
+* 立即调用函数表达式（IIFE）&& IIFE创建模块
 
