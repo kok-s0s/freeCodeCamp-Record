@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-05 09:43:10
+ * @LastEditTime: 2021-07-08 00:50:54
  * @Description: just Code!
 -->
 
@@ -20,6 +20,8 @@ don't say so much, just show my code.
 ### [Applied Visual Design](./Notes/Responsive-Web-Design/Applied-Visual-Design.md)
 
 ### [Applied Accessibility](./Notes/Responsive-Web-Design/Applied-Accessibility.md)
+
+### [Responsive Web Design Priciples](./Notes/Responsive-Web-Design/Responsive-Web-Design-Priciples.md)
 
 ### Responsive Web Design Projects
 

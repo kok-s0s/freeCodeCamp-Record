@@ -2,13 +2,11 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 13:23:56
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-07 23:19:19
+ * @LastEditTime: 2021-07-08 01:08:12
  * @Description: 无障碍
 -->
 
 > In web development, accessibility refers to web content and a UI (user interface) that can be understood, navigated, and interacted with by a broad audience. This includes people with visual, auditory, mobility, or cognitive disabilities.
-
-# Applied Accessibility
 
 ### 1. 为视觉障碍辅助功能添加替代图像的文本
 
