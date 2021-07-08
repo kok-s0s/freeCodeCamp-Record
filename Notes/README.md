@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-06 22:46:21
+ * @LastEditTime: 2021-07-08 21:30:41
  * @Description: Summary
 -->
 
@@ -78,9 +78,13 @@
 
 ## Basic-Algorithm-Scripting
 
+[记录文件](./JS-AADS/Basic-Algorithm-Scripting.md)
+
 就一些JavaScript的代码练习，算是个温故知新了。
 
 ## Object-Oriented-Programming
+
+[记录文件](./JS-AADS/Object-Oriented-Programming.md)
 
 * 学会如何构造一个对象
 * 对象的访问
@@ -100,3 +104,8 @@
 * 闭包的使用---使用闭包保护对象内的属性不被外部修改
 * 立即调用函数表达式（IIFE）&& IIFE创建模块
 
+## Functional Programming
+
+[记录文件](./JS-AADS/Functional-Programming.md)
+
+函数这东西我太熟悉了，能记录的东西不多。

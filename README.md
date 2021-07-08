@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-08 00:50:54
+ * @LastEditTime: 2021-07-08 10:50:00
  * @Description: just Code!
 -->
 
@@ -44,3 +44,7 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 ### [Basic Algorithm Scripting](./Notes/JS-AADS/Basic-Algorithm-Scripting.md)
 
 ### [Object Oriented Programming](./Notes/JS-AADS/Object-Oriented-Programming.md)
+
+### [Functional Programming](./Notes/JS-AADS/Functional-Programming.md)
+
+### [Intermediate Algorithm Scripting](./Notes/JS-AADS/Intermediate-Algorithm-Scripting.md)
