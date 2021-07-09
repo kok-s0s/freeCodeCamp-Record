@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-10 00:53:52
+ * @LastEditTime: 2021-07-10 00:54:38
  * @Description: just Code!
 -->
 
@@ -9,7 +9,7 @@
 
 don't say so much, just show my code.
 
-<a href="https://www.freecodecamp.org/"><img src="images/FreeCodeCamp_logo.png" style="border-radius: 10px"></a>
+<a href="https://www.freecodecamp.org/" target="_blank"><img src="images/FreeCodeCamp_logo.png" style="border-radius: 10px"></a>
 
 [freeCodeCamp-github](https://github.com/freeCodeCamp/freeCodeCamp)
 
