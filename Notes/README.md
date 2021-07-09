@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-08 21:30:41
+ * @LastEditTime: 2021-07-09 23:16:28
  * @Description: Summary
 -->
 
@@ -109,3 +109,17 @@
 [记录文件](./JS-AADS/Functional-Programming.md)
 
 函数这东西我太熟悉了，能记录的东西不多。
+
+还是有些许收获的：
+
+* map
+* filter
+* slice
+* concat
+* reduce
+* sort
+* split
+* join
+* every
+* some
+* 柯里化函数

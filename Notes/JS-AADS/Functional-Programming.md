@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-07-08 09:12:50
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-08 21:26:50
+ * @LastEditTime: 2021-07-09 23:11:57
  * @Description: 函数式编程
 -->
 
@@ -522,74 +522,287 @@ var inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
 nonMutatingSplice(inputCities);
 ```
 
-### 13.
+### 13. 使用 concat 方法组合两个数组
 
 ```javascript
-
+function nonMutatingConcat(original, attach) {
+    // Only change code below this line
+    return original.concat(attach);
+    // Only change code above this line
+}
+var first = [1, 2, 3];
+var second = [4, 5];
+nonMutatingConcat(first, second);
 ```
 
-### 14.
+### 14. 使用 concat 而不是 push 将元素添加到数组的末尾
 
 ```javascript
-
+function nonMutatingPush(original, newItem) {
+    // Only change code below this line
+    // return original.push(newItem);
+    return original.concat(newItem);
+    // Only change code above this line
+}
+var first = [1, 2, 3];
+var second = [4, 5];
+nonMutatingPush(first, second);
 ```
 
-### 15.
+### 15. 使用reduce方法分析数据
 
 ```javascript
+// The global variable
+var watchList = [{
+        "Title": "Inception",
+        "Year": "2010",
+        "Rated": "PG-13",
+        "Released": "16 Jul 2010",
+        "Runtime": "148 min",
+        "Genre": "Action, Adventure, Crime",
+        "Director": "Christopher Nolan",
+        "Writer": "Christopher Nolan",
+        "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page, Tom Hardy",
+        "Plot": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
+        "Language": "English, Japanese, French",
+        "Country": "USA, UK",
+        "Awards": "Won 4 Oscars. Another 143 wins & 198 nominations.",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+        "Metascore": "74",
+        "imdbRating": "8.8",
+        "imdbVotes": "1,446,708",
+        "imdbID": "tt1375666",
+        "Type": "movie",
+        "Response": "True"
+    },
+    {
+        "Title": "Interstellar",
+        "Year": "2014",
+        "Rated": "PG-13",
+        "Released": "07 Nov 2014",
+        "Runtime": "169 min",
+        "Genre": "Adventure, Drama, Sci-Fi",
+        "Director": "Christopher Nolan",
+        "Writer": "Jonathan Nolan, Christopher Nolan",
+        "Actors": "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
+        "Plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        "Language": "English",
+        "Country": "USA, UK",
+        "Awards": "Won 1 Oscar. Another 39 wins & 132 nominations.",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg",
+        "Metascore": "74",
+        "imdbRating": "8.6",
+        "imdbVotes": "910,366",
+        "imdbID": "tt0816692",
+        "Type": "movie",
+        "Response": "True"
+    },
+    {
+        "Title": "The Dark Knight",
+        "Year": "2008",
+        "Rated": "PG-13",
+        "Released": "18 Jul 2008",
+        "Runtime": "152 min",
+        "Genre": "Action, Adventure, Crime",
+        "Director": "Christopher Nolan",
+        "Writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Nolan (story), David S. Goyer (story), Bob Kane (characters)",
+        "Actors": "Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine",
+        "Plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+        "Language": "English, Mandarin",
+        "Country": "USA, UK",
+        "Awards": "Won 2 Oscars. Another 146 wins & 142 nominations.",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+        "Metascore": "82",
+        "imdbRating": "9.0",
+        "imdbVotes": "1,652,832",
+        "imdbID": "tt0468569",
+        "Type": "movie",
+        "Response": "True"
+    },
+    {
+        "Title": "Batman Begins",
+        "Year": "2005",
+        "Rated": "PG-13",
+        "Released": "15 Jun 2005",
+        "Runtime": "140 min",
+        "Genre": "Action, Adventure",
+        "Director": "Christopher Nolan",
+        "Writer": "Bob Kane (characters), David S. Goyer (story), Christopher Nolan (screenplay), David S. Goyer (screenplay)",
+        "Actors": "Christian Bale, Michael Caine, Liam Neeson, Katie Holmes",
+        "Plot": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from the corruption that Scarecrow and the League of Shadows have cast upon it.",
+        "Language": "English, Urdu, Mandarin",
+        "Country": "USA, UK",
+        "Awards": "Nominated for 1 Oscar. Another 15 wins & 66 nominations.",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BNTM3OTc0MzM2OV5BMl5BanBnXkFtZTYwNzUwMTI3._V1_SX300.jpg",
+        "Metascore": "70",
+        "imdbRating": "8.3",
+        "imdbVotes": "972,584",
+        "imdbID": "tt0372784",
+        "Type": "movie",
+        "Response": "True"
+    },
+    {
+        "Title": "Avatar",
+        "Year": "2009",
+        "Rated": "PG-13",
+        "Released": "18 Dec 2009",
+        "Runtime": "162 min",
+        "Genre": "Action, Adventure, Fantasy",
+        "Director": "James Cameron",
+        "Writer": "James Cameron",
+        "Actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
+        "Plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+        "Language": "English, Spanish",
+        "Country": "USA, UK",
+        "Awards": "Won 3 Oscars. Another 80 wins & 121 nominations.",
+        "Poster": "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+        "Metascore": "83",
+        "imdbRating": "7.9",
+        "imdbVotes": "876,575",
+        "imdbID": "tt0499549",
+        "Type": "movie",
+        "Response": "True"
+    }
+];
 
+function getRating(watchList) {
+    // Only change code below this line
+
+    // 第一种方法
+    // var averageRating =
+    //   watchList
+    //     .filter(film => film.Director === "Christopher Nolan")
+    //     .map(film => Number(film.imdbRating))
+    //     .reduce((sumOfRatings, rating) => sumOfRatings + rating) / watchList.filter(film => film.Director === "Christopher Nolan").length;
+
+    // 第二种方法
+    var count = 0;
+    var averageRating = watchList.reduce((sum, movie) => {
+        if (movie.Director == "Christopher Nolan") {
+            count += 1;
+            return sum + parseFloat(movie.imdbRating);
+        }
+        return sum;
+    }, 0) / count;
+
+    // Only change code above this line
+    return averageRating;
+}
+console.log(getRating(watchList));
 ```
 
-### 16.
+### 16. 使用高阶函数映射、过滤或减少来解决复杂问题
 
 ```javascript
+const squareList = arr => {
+    // Only change code below this line
+    return arr
+        .filter(num => num > 0 && Number.isInteger(num))
+        .map(num => Math.pow(num, 2));
+    // Only change code above this line
+};
 
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
 ```
 
-### 17.
+### 17. 使用 sort 方法按字母顺序对数组进行排序
 
 ```javascript
-
+function alphabeticalOrder(arr) {
+    // Only change code below this line
+    return arr.sort((a, b) => {
+        return a === b ? 0 : a > b ? 1 : -1;
+    })
+    // Only change code above this line
+}
+alphabeticalOrder(["a", "d", "c", "a", "z", "g"]);
 ```
 
-### 18.
+### 18. 在不改变原始数组的情况下返回已排序的数组
 
 ```javascript
+var globalArray = [5, 6, 3, 2, 9];
 
+function nonMutatingSort(arr) {
+    // Only change code below this line
+    return arr.slice().sort((a, b) => {
+        return a > b ? 1 : -1;
+    })
+    // Only change code above this line
+}
+nonMutatingSort(globalArray);
 ```
 
-### 19.
+### 19. 使用 split 方法将字符串拆分为数组
 
 ```javascript
-
+function splitify(str) {
+    // Only change code below this line
+    return str.split(/\W/)
+    // Only change code above this line
+}
+splitify("Hello World,I-am code");
 ```
 
-### 20.
+### 20. 使用 join 方法将数组合并为字符串
 
 ```javascript
-
+function sentensify(str) {
+    // Only change code below this line
+    return str.split(/\W/).join(" ");
+    // Only change code above this line
+}
+sentensify("May-the-force-be-with-you");
 ```
 
-### 21.
+### 21. 应用函数式编程将字符串转换为 URL Slugs
 
 ```javascript
-
+// Only change code below this line
+function urlSlug(title) {
+    return title.split(" ").filter(substr => substr !== "").join("-").toLowerCase();
+}
+// Only change code above this line
 ```
 
-### 22.
+### 22. 使用 every 方法检查数组中的每个元素是否符合条件
+
+> 只要有一个不符合条件就返回假；
 
 ```javascript
-
+function checkPositive(arr) {
+    // Only change code below this line
+    return arr.every((currentValue) => {
+        return currentValue > 0;
+    })
+    // Only change code above this line
+}
+checkPositive([1, 2, 3, -4, 5]);
 ```
 
-### 23.
+### 23. 使用 some 方法检查数组中的任何元素是否符合条件
+
+> 只要有一个符合条件就返回真；
 
 ```javascript
-
+function checkPositive(arr) {
+    // Only change code below this line
+    return arr.some((currentValue) => {
+        return currentValue > 0
+    })
+    // Only change code above this line
+}
+checkPositive([1, 2, 3, -4, 5]);
 ```
 
-### 24. 
+### 24. 柯里化介绍及部分应用
 
 ```javascript
-
+function add(x) {
+    // Only change code below this line
+    return y => z => x + y + z;
+    // Only change code above this line
+}
+add(10)(20)(30);
 ```
