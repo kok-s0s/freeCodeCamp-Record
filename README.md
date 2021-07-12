@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-10 14:13:50
+ * @LastEditTime: 2021-07-12 23:22:50
  * @Description: just Code!
 -->
 
@@ -54,3 +54,19 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 ### [Functional Programming](./Notes/JS-AADS/Functional-Programming.md)
 
 ### [Intermediate Algorithm Scripting](./Notes/JS-AADS/Intermediate-Algorithm-Scripting.md)
+
+### JavaScript Algorithms and Data Structures Projects
+
+#### [Palindrome Checker](./Notes/JS-AADS/Projects/Palindrome-Checker.js)
+
+#### [Roman Numeral Converter](./Notes/JS-AADS/Projects/Roman-Numeral-Converter.js)
+
+#### [Caesars Cipher](./Notes/JS-AADS/Projects/Caesars-Cipher.js)
+
+#### [Telephone Number Validator](./Notes/JS-AADS/Projects/Telephone-Number-Validator.js)
+
+## Front End Development Libraries
+
+Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development Libraries) 
+
+### [Bootstrap]
