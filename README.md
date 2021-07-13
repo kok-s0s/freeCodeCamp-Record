@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-12 23:22:50
+ * @LastEditTime: 2021-07-13 21:05:43
  * @Description: just Code!
 -->
 
@@ -64,6 +64,8 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 #### [Caesars Cipher](./Notes/JS-AADS/Projects/Caesars-Cipher.js)
 
 #### [Telephone Number Validator](./Notes/JS-AADS/Projects/Telephone-Number-Validator.js)
+
+#### [Cash Register](./Notes/JS-AADS/Projects/Cash-Register.js)
 
 ## Front End Development Libraries
 
