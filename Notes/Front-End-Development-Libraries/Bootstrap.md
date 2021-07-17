@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-07-12 23:23:05
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-17 18:22:12
+ * @LastEditTime: 2021-07-17 18:28:30
  * @Description: Bootstrap
 -->
 
@@ -1079,7 +1079,7 @@ Font Awesome 是一个非常便利的图标库。 我们可以通过 webfont 或
 
 > 为表单的文本输入框（text input）设置 form-control class。 为表单的提交（submit）按钮设置 btn btn-primary class， 并为它加上 Font Awesome 的 fa-paper-plane 图标。
 >  
-> 所有文本输入类的元素如 <input>，<textarea> 和 <select> 只要设置 .form-control class 就会占满100%的宽度。
+> 所有文本输入类的元素如 `<input>`，`<textarea>` 和 `<select>` 只要设置 .form-control class 就会占满100%的宽度。
 
 ```html
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
