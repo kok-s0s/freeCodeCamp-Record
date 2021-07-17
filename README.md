@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-17 18:23:02
+ * @LastEditTime: 2021-07-17 19:29:21
  * @Description: just Code!
 -->
 
@@ -72,3 +72,5 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Libraries) 
 
 ### [Bootstrap](./Notes/Front-End-Development-Libraries/Bootstrap.md)
+
+### [jQuery](./Notes/Front-End-Development-Libraries/jQuery.md)

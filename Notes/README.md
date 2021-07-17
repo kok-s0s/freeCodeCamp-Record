@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-20 00:18:11
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-17 18:25:14
+ * @LastEditTime: 2021-07-18 02:01:41
  * @Description: Summary
 -->
 
@@ -129,3 +129,9 @@
 [记录文件](./Front-End-Development-Libraries/Bootstrap.md)
 
 一个样式库，有自己预先设置好的类的样式，能够直接给元素使用，让页面具有响应式，有更合理的页面布局。
+
+## jQuery
+
+[记录文件](./Front-End-Development-Libraries/jQuery.md)
+
+一个JavaScript库，能够对页面元素进行相应的操作（增删改）以及样式的变化。
