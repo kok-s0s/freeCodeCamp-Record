@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-06-30 16:13:07
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-08 12:48:01
+ * @LastEditTime: 2021-07-19 18:40:25
  * @Description: 调查页面的制作---调查你对高达的了解？
 -->
 <!DOCTYPE html>
@@ -12,16 +12,101 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>你对于高达的了解？</title>
+    <title>你了解高达吗？</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body translate="no">
     <div class="container">
         <header class="header">
-            <h1 id="title">高达相关的调查问卷</h1>
-            <p id="description">感谢你抽出宝贵的时间来填写该问卷</p>
+            <h1 id="title" class="text-center">高达相关的调查问卷</h1>
+            <p id="description" class="description text-center">感谢你抽出宝贵的时间来填写该问卷</p>
         </header>
         <form id="survey-form">
+            <div class="form-group">
+                <label id="name-label" for="name">Name</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label id="email-label" for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter your Email"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label id="number-label" for="number">Age(Optional)</label>
+                <input type="number" name="age" id="number" min="10" max="99" class="form-control" placeholder="Age">
+            </div>
+
+            <div class="form-group">
+                <p>你现在喜欢着哪一款高达？</p>
+                <select id="dropdown" name="gundan" class="form-control" required>
+                    <option disabled selected value>选择一款高达</option>
+                    <option value="自由">自由高达</option>
+                    <option value="强袭">强袭高达</option>
+                    <option value="强袭自由">强袭自由高达</option>
+                    <option value="00高达">00高达</option>
+                    <option value="巴巴托斯">巴巴托斯</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <p>你有可能向朋友推荐高达这个IP吗？</p>
+                <label>
+                    <input name="user-recommend" value="definitely" type="radio" class="input-radio" checked>
+                    "肯定的"
+                </label>
+                <label>
+                    <input name="user-recommend" value="maybe" type="radio" class="input-radio">
+                    "可能会"
+                </label>
+                <label>
+                    <input name="user-recommend" value="not-sure" type="radio" class="input-radio">
+                    "不确定"
+                </label>
+            </div>
+
+            <div class="form-group">
+                "你都看过哪些高达作品？"
+                <span class="clue">所有选项都可选</span>
+
+                <label>
+                    <input name="prefer" value="机动战士敢达seed" type="checkbox" class="input-checkbox">
+                    机动战士敢达seed
+                </label>
+
+                <label>
+                    <input name="prefer" value="机动战士敢达00" type="checkbox" class="input-checkbox">
+                    机动战士敢达00
+                </label>
+
+                <label>
+                    <input name="prefer" value="机动战士敢达：铁血的奥尔芬斯" type="checkbox" class="input-checkbox">
+                    机动战士敢达：铁血的奥尔芬斯
+                </label>
+
+                <label>
+                    <input name="prefer" value="高达创战者" type="checkbox" class="input-checkbox">
+                    高达创战者
+                </label>
+
+                <label>
+                    <input name="prefer" value="高达创形者Re" type="checkbox" class="input-checkbox">
+                    高达创形者Re
+                </label>
+            </div>
+
+
+            <div class="form-group">
+                <p>能说说你接触高达的感受吗？</p>
+                <textarea id="comments" class="input-textarea" name="comment" placeholder="在这里写下有关你和高达的故事...">
+                </textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="submit" class="submit-button"> Submit</button>
+            </div>
 
         </form>
     </div>
