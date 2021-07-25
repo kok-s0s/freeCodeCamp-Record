@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-07-18 14:50:40
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-24 13:35:18
+ * @LastEditTime: 2021-07-25 21:40:35
  * @Description: React
 -->
 
@@ -336,6 +336,375 @@ class ToDo extends React.Component {
 ```
 
 ### 16. 使用默认的 Props
+
+```jsx
+const ShoppingCart = (props) => {
+  return (
+    <div>
+      <h1>Shopping Cart Component</h1>
+    </div>
+  )
+};
+// 修改这行下面的代码
+ShoppingCart.defaultProps = {items: 0};
+```
+
+### 17. 覆盖默认的 Props
+
+```jsx
+const Items = (props) => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+}
+
+Items.defaultProps = {
+  quantity: 0
+}
+
+class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    { /* 修改这行下面的代码 */ }
+    return <Items quantity={10}/>
+    { /* 修改这行上面的代码 */ }
+  }
+};
+```
+
+### 18. 使用 PropTypes 来定义 Props 的类型
+
+```jsx
+const Items = (props) => {
+  return <h1>Current Quantity of Items in Cart: {props.quantity}</h1>
+};
+
+// 修改这行下面的代码
+Items.propTypes = {quantity: PropTypes.number.isRequired}
+// 修改这行上面的代码
+
+Items.defaultProps = {
+  quantity: 0
+};
+
+class ShoppingCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <Items />
+  }
+};
+```
+
+### 19. 使用 this.props 访问 Props
+
+```jsx
+class ReturnTempPassword extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+            { /* 修改这行下面的代码 */ }
+            <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>
+            { /* 修改这行上面的代码 */ }
+        </div>
+    );
+  }
+};
+
+class ResetPassword extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+        <div>
+          <h2>Reset Password</h2>
+          <h3>We've generated a new temporary password for you.</h3>
+          <h3>Please reset this password from your account settings ASAP.</h3>
+          { /* 修改这行下面的代码 */ }
+          <ReturnTempPassword tempPassword="1234567890"/>
+          { /* 修改这行上面的代码 */ }
+        </div>
+    );
+  }
+};
+```
+
+### 20. 复习使用无状态函数组件的 Props
+
+无状态函数组件是一个函数，它接收 props 作为输入并返回 JSX。 另一方面，无状态组件是一个类，它扩展了React. Component，但是不使用内部状态。 最后，状态组件是指维护其自身内部状态的组件， 它简称组件或 React 组件。
+
+一种常见的应用模式是尽可能减少状态组件并创建无状态的函数组件。 这有助于将状态管理包含到应用程序的特定区域。 反过来，通过更容易地跟踪状态变化如何影响其行为，可以改善应用程序的开发和维护。
+
+```jsx
+class CampSite extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <Camper name="kok-s0s"/>
+      </div>
+    );
+  }
+};
+// 修改这行下面的代码
+class Camper extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <p>{this.props.name}</p>
+      </div>
+    )
+  }
+}
+Camper.defaultProps = {
+  name: "CamperBot"
+}
+Camper.propTypes = {name: PropTypes.string.isRequired}
+```
+
+### 21. 创建一个有状态的组件
+
+React 中最重要的主题之一是 state。 state 包含应用程序需要了解的任何数据，这些数据可能会随时间而变化。 应用程序能够响应 state 的变更，并在必要时显示更新后的 UI。 React 为现代 Web 应用程序的状态管理提供了一个很好的解决方案。
+
+可以在类组件的 constructor 上声明 state 属性来在 React 组件中创建 state， 它在创建时使用 state 初始化组件。 state 属性必须设置为 JavaScript object（对象）。 声明如下：
+
+```jsx
+this.state = {
+
+}
+```
+
+可以在组件的整个生命周期内访问 state 对象， 可以更新它、在 UI 中渲染它，也可以将其作为 props 传递给子组件。 state 对象的使用可以很简单，亦可以很复杂，就看你怎么用了。 请注意，必须通过扩展 React. Component 来创建类组件，以便像这样创建 state。
+
+```jsx
+class StatefulComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    // 只修改这一行下面的代码
+    this.state = {
+      name: "kok-s0s",
+    }
+    // 只修改这一行上面的代码
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};
+```
+
+### 22. 在用户界面中渲染状态
+
+定义了组件的初始 state 之后，就可以在要渲染的 UI 中显示它。 如果组件是有状态的，它将始终可以访问 render() 方法中 state 的数据。 就可以使用 this.state 访问数据。
+
+如果想在 render 方法的 return 中访问 state 值，必须把这个值用花括号括起来。
+
+state 是 React 组件中最强大的特性之一， 它可以跟踪应用程序中的重要数据，并根据数据的变化渲染 UI。 如果数据发生变化，UI 也会随之改变。 React 使用所谓的虚拟 DOM 来跟踪幕后的变化。 当 state 数据更新时，它会使用该数据触发组件的重新渲染 -- 包括接收 prop 数据的子组件。 React 只在必要的时候更新实际的 DOM， 这意味着你不必担心 DOM 的变更， 只需声明 UI 的外观即可。
+
+注意，如果组件是有状态的，其它组件并不知道它的 state。 它的 state 是完全封装的，或者是局限于组件本身的，除非你将 state 数据作为 props 传递给子组件。 封装 state 的概念非常重要，因为它允许编写特定的逻辑，然后将该逻辑包含并隔离在代码中的某个位置。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'freeCodeCamp'
+    }
+  }
+  render() {
+    return (
+      <div>
+        { /* 修改这行下面的代码 */ }
+        <h1>{this.state.name}</h1>
+        { /* 修改这行上面的代码 */ }
+      </div>
+    );
+  }
+};
+```
+
+### 23. 以另一种方式在用户界面中渲染状态
+
+还有另一种方法可以访问组件中的 state。 在 render() 方法中，在 return 语句之前，可以直接编写 JavaScript。 例如，可以声明函数、从 state 或 props 中访问数据、对此数据执行计算等。 然后，可以将任何数据赋值给 return 语句中可以访问的变量。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'freeCodeCamp'
+    }
+  }
+  render() {
+    // 修改这行下面的代码
+    const name = this.state.name;
+    // 修改这行上面的代码
+    return (
+      <div>
+        { /* 修改这行下面的代码 */ }
+        <h1>{name}</h1>
+        { /* 修改这行上面的代码 */ }
+      </div>
+    );
+  }
+};
+```
+
+### 24. 用 this.setState 设置状态
+
+还有一种方法可以更改组件的 state， React 提供了 setState 方法来更新组件的 state。 在组件类中调用 setState 方法如下所示：this.setState()，传入键值对的对象， 其中键是 state 属性，值是更新后的 state 数据。 例如，如果我们在 state 中存储 username，并想要更新它，代码如下所示：
+
+```jsx
+this.setState({
+  username: 'Lewis'
+});
+```
+
+React 要求永远不要直接修改 state，而是在 state 发生改变时始终使用 this.setState()。 此外，应该注意，React 可以批量处理多个 state 更新以提高性能。 这意味着通过 setState 方法进行的 state 更新可以是异步的。 setState 方法有一种替代语法可以解决异步问题， 虽然这很少用到，但是最好还是记住它！ 有关详细信息，请参阅[React文档](https://reactjs.org/docs/state-and-lifecycle.html)。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'Initial State'
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    // 修改这行下面的代码
+    this.setState({
+      name: 'React Rocks!',
+    });
+    // 修改这行上面的代码
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.name}</h1>
+      </div>
+    );
+  }
+};
+```
+
+### 25. 将 this 绑定到 Class 方法上
+
+除了设置和更新 state 之外，还可以为组件类定义方法。 类方法通常需要使用 this 关键字，以便它可以访问方法中类的属性（例如 state 和 props）。 有几种方法可以让类方法访问 this。
+
+一种常见的方法是在构造函数中显式地绑定 this，这样当组件初始化时，this 就会绑定到类方法。 你可能已经注意到上一个挑战在构造函数中的 handleClick 方法使用了 this.handleClick = this.handleClick.bind(this)。 然后，当在类方法中调用像 this.setState() 这样的函数时，this 指的是这个类，而不是 undefined。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Hello"
+    };
+    // 修改这行下面的代码
+    this.handleClick = this.handleClick.bind(this);
+    // 修改这行上面的代码
+  }
+  handleClick() {
+    this.setState({
+      text: "You clicked!"
+    });
+  }
+  render() {
+    return (
+      <div>
+        { /* 修改这行下面的代码 */ }
+        <button onClick={this.handleClick}>Click Me</button>
+        { /* 修改这行上面的代码 */ }
+        <h1>{this.state.text}</h1>
+      </div>
+    );
+  }
+};
+```
+
+### 26. 使用 State 切换元素
+
+有时可能在更新状态的时候想知道上一个状态是什么。 但是状态更新是异步的，这意味着 React 可能会把多个 setState() 集中在一起批量更新。 所以计算下一个值时 this.state 或者 this.props 不能作为当前值。 所以最好不要写如下的代码：
+
+```jsx
+this.setState({
+  counter: this.state.counter + this.props.increment
+}); 
+```
+
+正确的做法是，给 setState 传入一个函数，这个函数可以访问 state 和 props。 给 setState 传入函数可以保证 state 和 props 是正确的值。 代码可以重写为这样：
+
+```jsx
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+```
+
+如果只需要 state，那么用下面没有 props 的格式也是可以的：
+
+```jsx
+this.setState(state => ({
+  counter: state.counter + 1
+}));
+```
+
+注意一定要把 object 放在括号里，否则 JavaScript 会认为这只是代码片段。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visibility: false
+    };
+    // 修改这行下面的代码
+    this.toggleVisibility = this.toggleVisibility.bind(this);
+    // 修改这行上面的代码
+  }
+  // 修改这行下面的代码
+  toggleVisibility() {
+    this.setState(state => ({
+      visibility: !state.visibility,
+    }));
+  }
+  // 修改这行上面的代码
+  render() {
+    if (this.state.visibility) {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+          <h1>Now you see me!</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <button onClick={this.toggleVisibility}>Click Me</button>
+        </div>
+      );
+    }
+  }
+}
+```
+
+### 27. 写一个简单的计数器
 
 ```jsx
 
