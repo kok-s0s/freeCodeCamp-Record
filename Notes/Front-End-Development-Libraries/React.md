@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-07-18 14:50:40
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-26 21:13:08
+ * @LastEditTime: 2021-07-27 14:30:57
  * @Description: React
 -->
 
@@ -1146,6 +1146,464 @@ class Colorful extends React.Component {
 
 ### 38. 在 React Render 方法中使用 JavaScript
 
-```jsx
+在之前的挑战中，学习了如何使用大括号 { } 将 JavaScript 代码插入到 JSX 代码中，用于访问 props、传递 props、访问 state、在代码中插入注释以及最近学习的定制组件样式等任务。 这些都是将 JavaScript 放在 JSX 中的常见用例，但是在 React 组件中使用 JavaScript 代码还有其他方式。
 
+在 render 方法中编写 JavaScript，可以把 JavaScript 直接放在 return 语句之前，而不必将其插入大括号中。 这是因为它还不在 JSX 代码中。 如果之后想在 return 语句中的 JSX 代码里面使用变量时，可以将变量名放在大括号中。
+
+```jsx
+const inputStyle = {
+  width: 235,
+  margin: 5
+};
+
+class MagicEightBall extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInput: '',
+      randomIndex: ''
+    };
+    this.ask = this.ask.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  ask() {
+    if (this.state.userInput) {
+      this.setState({
+        randomIndex: Math.floor(Math.random() * 20),
+        userInput: ''
+      });
+    }
+  }
+  handleChange(event) {
+    this.setState({
+      userInput: event.target.value
+    });
+  }
+  render() {
+    const possibleAnswers = [
+      'It is certain',
+      'It is decidedly so',
+      'Without a doubt',
+      'Yes, definitely',
+      'You may rely on it',
+      'As I see it, yes',
+      'Outlook good',
+      'Yes',
+      'Signs point to yes',
+      'Reply hazy try again',
+      'Ask again later',
+      'Better not tell you now',
+      'Cannot predict now',
+      'Concentrate and ask again',
+      "Don't count on it",
+      'My reply is no',
+      'My sources say no',
+      'Most likely',
+      'Outlook not so good',
+      'Very doubtful'
+    ];
+    const answer = possibleAnswers[this.state.randomIndex]; // 修改这一行
+    return (
+      <div>
+        <input
+          type='text'
+          value={this.state.userInput}
+          onChange={this.handleChange}
+          style={inputStyle}
+        />
+        <br />
+        <button onClick={this.ask}>Ask the Magic Eight Ball!</button>
+        <br />
+        <h3>Answer:</h3>
+        <p>
+          {/* 修改这行下面的代码 */}
+          {answer}
+          {/* 修改这行上面的代码 */}
+        </p>
+      </div>
+    );
+  }
+}
+```
+
+### 39. 使用 If-Else 条件进行渲染
+
+使用 JavaScript 控制渲染视图的另一个应用是按条件渲染元素。 当条件为真时，将呈现一个视图， 反之，则呈现另一种视图。 可以在 React 组件的 render() 方法中使用的标准 if/else 语句来实现这一点。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: true
+    }
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+  toggleDisplay() {
+    this.setState((state) => ({
+      display: !state.display
+    }));
+  }
+  render() {
+    // 修改这行下面的代码
+    if(this.state.display)
+      return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+            <h1>Displayed!</h1>
+       </div>
+    );
+    else 
+      return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+       </div>
+      );
+  }
+};
+```
+
+### 40. Use && for a More Concise Conditional
+
+if/else 语句在上一次挑战中是有效的，但是有一种更简洁的方法可以达到同样的结果。 假设正在跟踪组件中的几个条件，并且希望根据这些条件中的每一个来渲染不同的元素。 如果你写了很多 else if 语句来返回稍微不同的 UI，你可能会写很多重复代码，这就留下了出错的空间。 相反，你可以使用 && 逻辑运算符以更简洁的方式执行条件逻辑。 这是完全可行的，因为你希望检查条件是否为 true。如果是，则返回一些标记。 这里有一个例子：
+
+```jsx
+{condition && <p>markup</p>}
+```
+
+如果 condition 为 true，则返回标记。 如果条件为 false ，则在评估 condition 后操作将立即返回 false，并且不返回任何内容。 可以将这些语句直接包含在 JSX 中，并通过在每个条件后面写 && 来将多个条件串在一起。 这允许你在 render() 方法中处理更复杂的条件逻辑，而无需重复大量代码。
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      display: true
+    }
+    this.toggleDisplay = this.toggleDisplay.bind(this);
+  }
+  toggleDisplay() {
+    this.setState(state => ({
+      display: !state.display
+    }));
+  }
+  render() {
+    // 修改这行下面的代码
+    return (
+       <div>
+         <button onClick={this.toggleDisplay}>Toggle Display</button>
+         {this.state.display && <h1>Displayed!</h1>}
+       </div>
+    );
+  }
+};
+```
+
+### 41. 使用三元表达式进行条件渲染
+
+在继续使用动态渲染技术之前，还有最后一种方法可以渲染想要的东西，它使用内置的 JavaScript 条件：三元运算符。 三元运算符经常被用作 JavaScript 中 if/else 语句的缩写。 它们不像传统的 if/else 语句那样强大，但是在 React 开发人员中非常流行， 原因之一就是 JSX 的编译原理，if/else 语句不能直接插入到 JSX 代码中。 可能你在前几个挑战就注意到了这一点——当需要 if/else 语句时，它总是在 return 语句的外面。 如果想在 JSX 中实现条件逻辑，三元表达式是一个很好的选择。 回想一下，三元运算符有三个部分，但是可以将多个三元表达式组合在一起。 以下是基本语法：
+
+```jsx
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+```jsx
+const inputStyle = {
+  width: 235,
+  margin: 5
+};
+
+class CheckUserAge extends React.Component {
+  constructor(props) {
+    super(props);
+    // 修改这行下面的代码
+    this.state = {
+      input: '',
+      userAge: ''
+    }
+    // 修改这行上面的代码
+    this.submit = this.submit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(e) {
+    this.setState({
+      input: e.target.value,
+      userAge: ''
+    });
+  }
+  submit() {
+    this.setState(state => ({
+      userAge: state.input
+    }));
+  }
+  render() {
+    const buttonOne = <button onClick={this.submit}>Submit</button>;
+    const buttonTwo = <button>You May Enter</button>;
+    const buttonThree = <button>You Shall Not Pass</button>;
+    return (
+      <div>
+        <h3>Enter Your Age to Continue</h3>
+        <input
+          style={inputStyle}
+          type='number'
+          value={this.state.input}
+          onChange={this.handleChange}
+        />
+        <br />
+        {/* 修改这行下面的代码 */}
+        {this.state.userAge === '' ? buttonOne : this.state.userAge >= 18 ? buttonTwo : buttonThree }
+        {/* 修改这行上面的代码 */}
+      </div>
+    );
+  }
+}
+```
+
+### 42. 根据 Props 有条件地渲染
+
+到目前为止，你已经看到如何使用 if/else、&& 以及三元运算符（condition ? expressionIfTrue : expressionIfFalse）在不同条件下运行不同的代码。 然而，还有一个重要的话题需要讨论，将这些概念中的任何一个或所有概念与另一个强大的 React 功能 props 结合起来。 使用 props 有条件地渲染代码在 React 开发人员中很常见——也就是说：他们使用给定 prop 的值来自动决定渲染什么。
+
+在这个挑战中，将设置一个子组件来根据 props 做出渲染决定。 可以使用三元运算符，但是可以看到过去几个挑战中涵盖的其他几个概念在这种情况下可能同样有用。
+
+```jsx
+class Results extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    {/* 修改这行下面的代码 */}
+    return <h1>{this.props.fiftyFifty ? "You Win!" : "You Lose!"}</h1>;
+    {/* 修改这行上面的代码 */}
+  }
+}
+
+class GameOfChance extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 1
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState(prevState => {
+      // 完成 return 语句
+      return {
+        counter: prevState.counter + 1,
+      }
+    });
+  }
+  render() {
+    const expression = Math.random() >= 0.5; // 修改这一行
+    return (
+      <div>
+        <button onClick={this.handleClick}>Play Again</button>
+        {/* 修改这行下面的代码 */}
+        <Results fiftyFifty={expression}/>
+        {/* 修改这行上面的代码 */}
+        <p>{'Turn: ' + this.state.counter}</p>
+      </div>
+    );
+  }
+}
+```
+
+### 43. 根据组件状态有条件地更改内联 CSS
+
+此时，已经看到了一些条件渲染的应用程序和内联样式的使用。 这里还有一个将这两个主题结合在一起的例子。 你也可以根据 React 组件的 state 有条件地渲染 CSS。 要执行此操作，请检查条件，如果满足该条件，则修改在 render 方法中分配给 JSX 元素的样式对象。
+
+理解这个模式很重要，因为相比传统的方式（这在 jQuery 中非常常见），直接修改 DOM 元素来应用样式的方法是一个戏剧性的转变。 在该方法中，必须跟踪元素何时更改并直接处理实际操作。 跟踪更改可能变得很困难，可能会使 UI无法预测。 当根据一个条件设置一个样式对象时，描述了 UI 作为应用程序的状态函数应当如何展现。 如此便有一个清晰的单向流动的信息流。 这是使用 React 编写应用程序时的首选方法。
+
+```jsx
+class GateKeeper extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: ''
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event) {
+    this.setState({ input: event.target.value })
+  }
+  render() {
+    let inputStyle = {
+      border: '1px solid black'
+    };
+    // 修改这行下面的代码
+    if(this.state.input.length > 15) 
+      inputStyle = {
+        border: '3px solid red'
+      }
+    // 修改这行上面的代码
+    return (
+      <div>
+        <h3>Don't Type Too Much:</h3>
+        <input
+          type="text"
+          style={inputStyle}
+          value={this.state.input}
+          onChange={this.handleChange} />
+      </div>
+    );
+  }
+};
+```
+
+### 44. 使用 Array.map() 动态渲染元素
+
+条件渲染很有用，但是可能需要组件来渲染未知数量的元素。 通常在响应式编程中，程序员在应用程序运行时之前无法知道其 state，因为这在很大程度上取决于用户与该程序的交互。 程序员需要提前编写代码来正确处理未知状态。 在 React 中使用 Array.map() 阐明了这个概念。
+
+例如，创建一个简单的“To Do List”应用程序。 作为程序员，你无法知道用户可能在其列表中有多少项。 需要设置组件，以便在使用该程序的人决定今天今日待办事项之前动态渲染正确数量的列表元素。
+
+```jsx
+const textAreaStyles = {
+  width: 235,
+  margin: 5
+};
+
+class MyToDoList extends React.Component {
+  constructor(props) {
+    super(props);
+    // 修改这行下面的代码
+    this.state = {
+      userInput: '',
+      toDoList: []
+    }
+    // 修改这行上面的代码
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleSubmit() {
+    const itemsArray = this.state.userInput.split(',');
+    this.setState({
+      toDoList: itemsArray
+    });
+  }
+  handleChange(e) {
+    this.setState({
+      userInput: e.target.value
+    });
+  }
+  render() {
+    const items = this.state.toDoList.map(item => <li>{item}</li>); // 修改这一行
+    return (
+      <div>
+        <textarea
+          onChange={this.handleChange}
+          value={this.state.userInput}
+          style={textAreaStyles}
+          placeholder='Separate Items With Commas'
+        />
+        <br />
+        <button onClick={this.handleSubmit}>Create List</button>
+        <h1>My "To Do" List:</h1>
+        <ul>{items}</ul>
+      </div>
+    );
+  }
+}
+```
+
+### 45. 给同级元素一个唯一的键属性
+
+上一个挑战展示了如何使用 map 方法根据用户输入动态渲染多个元素。 然而，这个例子中缺少一个重要的部分。 创建元素数组时，每个元素都需要一个设置为唯一值的 key 属性。 React 使用这些键来跟踪哪些项目被添加、更改或删除。 这有助于在以任何方式修改列表时提高重新渲染过程的效率。
+
+注意： 键只需要在兄弟元素之间是唯一的，它们不需要在应用程序中是全局唯一的。
+
+```jsx
+const frontEndFrameworks = [
+  'React',
+  'Angular',
+  'Ember',
+  'Knockout',
+  'Backbone',
+  'Vue'
+];
+
+function Frameworks() {
+  const renderFrameworks = frontEndFrameworks.map((item, index) => <li key={index}>{item}</li>); // 修改这一行
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
+};
+```
+
+### 46. 使用 Array. Filter() 动态过滤数组
+
+map 数组方法是一个强大的工具，在使用 React 时经常使用。 与 map 相关的另一种方法是 filter，它根据条件过滤数组的内容，然后返回一个新数组。 例如，如果有一个 users 数组，每个数组元素都有一个可以设置为 true 或 false 的 online 属性，可以这样只过滤那些在线的用户：
+
+```jsx
+let onlineUsers = users.filter(user => user.online);
+```
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          username: 'Jeff',
+          online: true
+        },
+        {
+          username: 'Alan',
+          online: false
+        },
+        {
+          username: 'Mary',
+          online: true
+        },
+        {
+          username: 'Jim',
+          online: false
+        },
+        {
+          username: 'Sara',
+          online: true
+        },
+        {
+          username: 'Laura',
+          online: true
+        }
+      ]
+    };
+  }
+  render() {
+    const usersOnline = this.state.users.filter(user => user.online); // 修改这一行
+    const renderOnline = usersOnline.map((item,index) => <li key={index}>{item.username}</li>); // 修改这一行
+    return (
+      <div>
+        <h1>Current Online Users:</h1>
+        <ul>{renderOnline}</ul>
+      </div>
+    );
+  }
+}
+```
+
+### 47. 用 renderToString 在服务器上渲染 React
+
+到目前为止，已经能够在客户端上渲染 React 组件， 一般来说我们都是这么做的。 然而，在一些用例中，需要在服务器上渲染一个 React 组件。 由于 React 是一个 JavaScript 视图库，所以通常使用 Node 让 JavaScript 运行在服务器上。 事实上，React 提供了一个可用于此目的的 renderToString() 方法。
+
+有两个关键原因可以解释为什么服务器上的渲染可能会在真实世界的应用程序中使用。 首先，如果不这样做，当 React 应用程序最初加载到浏览器时，它将包含一个代码量很少的 HTML 文件和一大堆 JavaScript。 这对于搜索引擎来说可能不太理想，因为它们试图为网页内容生成索引，以便人们可以找到这个应用。 如果在服务器上渲染初始 HTML 标记并将其发送到客户端，则初始页面加载的内容包含搜索引擎可以抓取的所有页面标记。 其次，这创造了更快的初始页面加载体验，因为渲染的 HTML 代码量要比整个应用程序的 JavaScript 代码小。 React 仍然能够识别你的应用并在初始加载后进行管理。
+
+```jsx
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <div/>
+  }
+};
+
+// 修改这行下面的代码
+ReactDOMServer.renderToString(<App />);
 ```
