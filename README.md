@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-19 18:43:55
+ * @LastEditTime: 2021-07-27 14:31:58
  * @Description: just Code!
 -->
 
@@ -78,3 +78,5 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 ### [SASS](./Notes/Front-End-Development-Libraries/SASS.md)
 
 ### [React](./Notes/Front-End-Development-Libraries/React.md)
+
+### [Redux](./Notes/Front-End-Development-Libraries/Redux.md)
