@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-07-27 14:31:43
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-07-30 22:14:19
+ * @LastEditTime: 2021-08-01 18:31:24
  * @Description: Redux
 -->
 
@@ -271,5 +271,305 @@ const rootReducer = Redux.combineReducers({
 现在，notes 键将包含与注释相关联的所有状态，并由 notesReducer 处理。 这就是组合多个 reducer 来管理更复杂的应用程序状态的方式， 在此示例中，Redux store 中保存的状态将是一个包含 auth 和 notes 属性的简单对象。
 
 ```jsx
+const INCREMENT = 'INCREMENT';
+const DECREMENT = 'DECREMENT';
 
+const counterReducer = (state = 0, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT:
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
+
+const authReducer = (state = { authenticated: false }, action) => {
+  switch (action.type) {
+    case LOGIN:
+      return {
+        authenticated: true
+      }
+    case LOGOUT:
+      return {
+        authenticated: false
+      }
+    default:
+      return state;
+  }
+};
+
+const rootReducer = Redux.combineReducers({
+  count: counterReducer,
+  auth: authReducer
+})// 在这里定义 root reducer
+
+const store = Redux.createStore(rootReducer);
+```
+
+### 11. 发送 Action Data 给 Store
+
+到目前为止，你已经学会了如何将 action dispatch 给 Redux store，但到目前为止，这些 action 并未包含除 type之外的任何信息。 还可以和 action 一起发送特定数据。 事实上，这是非常常见的，因为 action 通常源于一些用户交互，并且往往会携带一些数据， Redux store 经常需要知道这些数据。
+
+```jsx
+const ADD_NOTE = 'ADD_NOTE';
+
+const notesReducer = (state = 'Initial State', action) => {
+  switch(action.type) {
+    // 修改这行下面的代码
+    case ADD_NOTE:
+      return action.text;
+    // 修改这行上面的代码
+    default:
+      return state;
+  }
+};
+
+const addNoteText = (note) => {
+  // 修改这行下面的代码
+  return {
+    type: ADD_NOTE,
+    text: note,
+  }
+  // 修改这行上面的代码
+};
+
+const store = Redux.createStore(notesReducer);
+
+console.log(store.getState());
+store.dispatch(addNoteText('Hello!'));
+console.log(store.getState());
+```
+
+### 12. 使用中间件处理异步操作
+
+目前为止的挑战都在避免讨论异步操作，但它们是 Web 开发中不可避免的一部分。 在某些时候，需要在 Redux 应用程序中使用异步请求，那么如何处理这些类型的请求？ Redux 中间件专为此目的而设计，称为 Redux Thunk 中间件。 这里简要介绍如何在 Redux 中使用它。
+
+如果要使用 Redux Thunk 中间件，请将其作为参数传递给 Redux.applyMiddleware()。 然后将此函数作为第二个可选参数提供给 createStore() 函数， 看一下编辑器底部的代码。 然后，要创建一个异步的 action，需要在 action creator 中返回一个以 dispatch 为参数的函数。 在这个函数中，可以 dispatch action 并执行异步请求。
+
+在此示例中，使用 setTimeout() 模拟异步请求。 通常在执行异步行为之前 dispatch action，以便应用程序状态知道正在请求某些数据（例如，这个状态可以显示加载图标）。 然后，一旦收到数据，就会发送另一个 action，该 action 的 data 是请求返回的数据同时也代表 API 操作完成。
+
+请记住，正在将 dispatch 作为参数传递给这个特殊的 action creator。 需要 dispatch action 时只需将 action 直接传递给 dispatch，中间件就可以处理其余的部分。
+
+---
+
+在 handleAsync() 的 action creator 中编写两个 dispatch 事件。 在 setTimeout()（模拟 API 调用）之前 dispatch requestingData()。 然后在收到（模拟）数据后，dispatch receivedData() action，传入这些数据。 现在已经知道如何处理 Redux 中的异步操作， 其他所有操作都继续像以前一样。
+
+```jsx
+const REQUESTING_DATA = 'REQUESTING_DATA'
+const RECEIVED_DATA = 'RECEIVED_DATA'
+
+const requestingData = () => { return {type: REQUESTING_DATA} }
+const receivedData = (data) => { return {type: RECEIVED_DATA, users: data.users} }
+
+const handleAsync = () => {
+  return function(dispatch) {
+    // 在这里发送 request action
+    dispatch(requestingData());
+    setTimeout(function() {
+      let data = {
+        users: ['Jeff', 'William', 'Alice']
+      }
+      // 在这里发送接收到的 data action
+      dispatch(receivedData(data));
+    }, 2500);
+  }
+};
+
+const defaultState = {
+  fetching: false,
+  users: []
+};
+
+const asyncDataReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case REQUESTING_DATA:
+      return {
+        fetching: true,
+        users: []
+      }
+    case RECEIVED_DATA:
+      return {
+        fetching: false,
+        users: action.users
+      }
+    default:
+      return state;
+  }
+};
+
+const store = Redux.createStore(
+  asyncDataReducer,
+  Redux.applyMiddleware(ReduxThunk.default)
+);
+```
+
+### 13. 用 Redux 写一个计数器
+
+现在已经了解了 Redux 的所有核心原则！ 已经了解了如何创建 action 和 action creator，创建 Redux store，通过 store dispatch action，以及使用纯粹的 reducer 设计状态更新。 甚至已经看到过如何使用 reducer 组合管理复杂状态并处理异步操作。 这些例子很简单，但这些概念是 Redux 的核心原则。 如果已经理解这些，那么就可以开始构建自己的 Redux 应用了。 接下来的挑战包括关于 state 不变性的一些细节，但是，这里是对到目前为止学到的所有内容的回顾。
+
+```jsx
+const INCREMENT = 'INCREMENT'; // 为 increment action types 定义一个常量
+const DECREMENT = 'DECREMENT'; // 为 decrement action types 定义一个常量
+
+const counterReducer = (state = 0, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return state + 1;
+    case DECREMENT: 
+      return state - 1;
+    default: 
+      return state;
+  }
+}; // 定义 counter reducer，根据接收到的动作递增或递减 state
+
+const incAction = () => {
+  return {
+    type: INCREMENT,
+  }
+}; // 为自增运算定义一个动作创建器
+
+const decAction = () => {
+  return {
+    type: DECREMENT,
+  }
+}; // 为自减运算定义一个动作创建器
+
+const store = Redux.createStore(counterReducer); // 在这里定义 Redux store，传入 reducers
+```
+
+### 14. 永不改变状态
+
+这些最后的挑战描述了在 Redux 中强制执行状态不变性关键原则的几种方法。 不可变状态意味着永远不直接修改状态，而是返回一个新的状态副本。
+
+如果拍摄 Redux 应用程序一段时间状态的快照，会看到类似 state 1，state 2，state 3，state 4，... 等等，每个状态可能与最后一个状态相似，但每个状态都是一个独特的数据。 事实上，这种不变性提供了时间旅行调试等功能。
+
+Redux 并没有主动地在其 store 或者 reducer 中强制执行状态不变性，责任落在程序员身上。 幸运的是，JavaScript（尤其是 ES6）提供了一些有用的工具，可以用来强制执行状态的不变性，无论是 string，number，array 或 object。 请注意，字符串和数字是原始值，并且本质上是不可变的。 换句话说，3 总是 3， 不能改变数字 3 的值。 然而，array 或 object 是可变的。 实际上，状态可能会包括 array 或 object，因为它们经常用来描述一些代表信息的数据结构。
+
+```jsx
+const ADD_TO_DO = 'ADD_TO_DO';
+
+// 一个展示需要完成的任务的字符串列表：
+const todos = [
+  'Go to the store',
+  'Clean the house',
+  'Cook dinner',
+  'Learn to code',
+];
+
+const immutableReducer = (state = todos, action) => {
+  switch(action.type) {
+    case ADD_TO_DO:
+      // 这里不能修改 state，否则测试不能通过
+      return state.concat(action.todo);
+    default:
+      return state;
+  }
+};
+
+const addToDo = (todo) => {
+  return {
+    type: ADD_TO_DO,
+    todo
+  }
+}
+
+const store = Redux.createStore(immutableReducer);
+```
+
+### 15. 在数组中使用扩展运算符
+
+ES6 中有助于在 Redux 中强制执行状态不变性的一个解决方案是扩展运算符：...。 扩展运算符具有很多的应用，其中一种非常适合通过一个已有的数组生成一个新数组。 这是相对较新的但常用的语法。 例如，如果你有一个数组 myArray 并写：
+
+```js
+let newArray = [...myArray];
+```
+
+newArray 现在是 myArray 的克隆。 两个数组仍然分别存在于内存中。 如果你执行像 newArray.push(5) 这样的变异， myArray 不会改变。 ... 有效将 myArray 中的值展开到一个新数组中。 要克隆数组，但在新数组中添加其他值，可以编写 [...myArray, 'new value']。 这将返回一个由 myArray 中的值和字符串 new value（作为最后一个值）组成的新数组。 扩展语法可以像这样在数组组合中多次使用，但重要的是要注意它只是生成数组的浅拷贝副本。 也就是说，它只为一维数组提供不可变的数组操作。
+
+```jsx
+const immutableReducer = (state = ['Do not mutate state!'], action) => {
+  switch(action.type) {
+    case 'ADD_TO_DO':
+      // 这里不能修改 state，否则测试不能通过
+      return [...state, action.todo];
+    default:
+      return state;
+  }
+};
+
+const addToDo = (todo) => {
+  return {
+    type: 'ADD_TO_DO',
+    todo
+  }
+}
+
+const store = Redux.createStore(immutableReducer);
+```
+
+### 16. 从数组中删除项目
+
+是时候练习从数组中删除项目了。 扩展运算符也可以在这里使用。 其他有用的JavaScript方法包括 slice() 和 concat()。
+
+```jsx
+const immutableReducer = (state = [0,1,2,3,4,5], action) => {
+  switch(action.type) {
+    case 'REMOVE_ITEM':
+      // 这里不能修改 state，否则测试不能通过
+      return [...state.slice(0, action.index), ...state.slice(action.index + 1, state.length)];
+    default:
+      return state;
+  }
+};
+
+const removeItem = (index) => {
+  return {
+    type: 'REMOVE_ITEM',
+    index
+  }
+}
+
+const store = Redux.createStore(immutableReducer);
+```
+
+### 17. 使用 Object.assign 拷贝对象
+
+最后几个挑战适用于数组，但是当状态是 object 时，有一些方法可以实现状态不变性。 处理对象的一个常用的方法是 Object.assign()。 Object.assign() 获取目标对象和源对象，并将源对象中的属性映射到目标对象。 任何匹配的属性都会被源对象中的属性覆盖。 通常用于通过传递一个空对象作为第一个参数，然后是要用复制的对象来制作对象的浅表副本。 这是一个例子：
+
+```js
+const newObject = Object.assign({}, obj1, obj2);
+```
+
+这会创建 newObject 作为新的 object，其中包含 obj1 和 obj2 中当前存在的属性。
+
+```jsx
+const defaultState = {
+  user: 'CamperBot',
+  status: 'offline',
+  friends: '732,982',
+  community: 'freeCodeCamp'
+};
+
+const immutableReducer = (state = defaultState, action) => {
+  switch(action.type) {
+    case 'ONLINE':
+      // 这里不能修改 state，否则测试不能通过
+      return Object.assign({}, state, {status: 'online'});
+    default:
+      return state;
+  }
+};
+
+const wakeUp = () => {
+  return {
+    type: 'ONLINE'
+  }
+};
+
+const store = Redux.createStore(immutableReducer);
 ```
