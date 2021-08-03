@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-07-27 14:31:58
+ * @LastEditTime: 2021-08-03 18:53:50
  * @Description: just Code!
 -->
 
@@ -34,6 +34,8 @@ don't say so much, just show my code.
 #### [Build a Tribute Page](./Notes/Responsive-Web-Design/Projects/Tribute-Page)
 
 #### [Build a Survey Form](./Notes/Responsive-Web-Design/Projects/Survey-Form)
+
+#### [Build a Product Landing Page](./Notes/Responsive-Web-Design/Projects/Product-Landing-Page)
 
 ## JavaScript Algorithms and Data Structures 
 
@@ -80,3 +82,11 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 ### [React](./Notes/Front-End-Development-Libraries/React.md)
 
 ### [Redux](./Notes/Front-End-Development-Libraries/Redux.md)
+
+### [React-Redux](./Notes/Front-End-Development-Libraries/React-Redux.md)
+
+## Data Visualization
+
+Files ==> [Data-Visualization](./Notes/Data-Visualization) 
+
+### [Data Visualization with D3](./Notes/Data-Visualization/Data-Visualization-with-D3.md)
