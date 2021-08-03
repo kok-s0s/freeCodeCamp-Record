@@ -1,0 +1,128 @@
+<!--
+ * @Author: kok-s0s
+ * @Date: 2021-08-03 12:24:37
+ * @LastEditors: kok-s0s
+ * @LastEditTime: 2021-08-03 18:37:29
+ * @Description: 产品登陆页
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundan</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <header id="header">
+            <div class="logo">
+                <img id="header-img" src="./Gundam-logo.png" alt="Gundam">
+            </div>
+
+            <nav id="nav-bar">
+                <ul>
+                    <li><a class="nav-link" href="#features">产品特点</a></li>
+                    <li><a class="nav-link" href="#how-it-works">如何把玩</a></li>
+                    <li><a class="nav-link" href="#pricing">价格</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="customer">
+            <h2>高达模玩，你值得拥有！</h2>
+            <form id="form" action="https://www.freecodecamp.com/email-submit">
+                <input name="email" id="email" type="email" placeholder="请输入你的邮箱地址" required>
+                <input id="submit" type="submit" value="点击开始购买" class="btn" />
+            </form>
+        </section>
+
+        <div class="container">
+            <section id="features">
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-fire"></i></div>
+                    <div class="desc">
+                        <h2>保证百分百正品</h2>
+                        <p>
+                            我们卖的模型全是万代入货的，绝无盗版！
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-truck"></i></div>
+                    <div class="desc">
+                        <h2>快速发货</h2>
+                        <p>
+                            我们多地都有实体仓库，能够保证尽快将商品送到你的手上。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid">
+                    <div class="icon"><i class="fa fa-3x fa-battery-full" aria-hidden="true"></i></div>
+                    <div class="desc">
+                        <h2>售后服务</h2>
+                        <p>
+                            假一赔十！假一赔十！假一赔十！
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="how-it-works">
+                <iframe id="video" height="315" src="./gundam-video.mp4" frameborder="0" allowfullscreen></iframe>
+            </section>
+
+            <section id="pricing">
+                <div class="product" id="tenor">
+                    <div class="level">HG</div>
+                    <h2>60~200¥</h2>
+                    <ol>
+                        <li>1:144的比例，13cm高</li>
+                        <li>外形较好，活动关节中等</li>
+                        <li>适合新手</li>
+                    </ol>
+                    <button class="btn">购买</button>
+                </div>
+                <div class="product" id="bass">
+                    <div class="level">RG</div>
+                    <h2>110~260¥</h2>
+                    <ol>
+                        <li>1:144的比例，13cm高</li>
+                        <li>有一体成型的骨架，但由于比例较小，骨架比较脆弱</li>
+                        <li>适合老手</li>
+                    </ol>
+                    <button class="btn">购买</button>
+                </div>
+                <div class="product" id="valve">
+                    <div class="level">MG</div>
+                    <h2>280~600¥</h2>
+                    <ol>
+                        <li>1:100的比例</li>
+                        <li>外形精细，活动关节合理</li>
+                        <li>适合老手</li>
+                    </ol>
+                    <button class="btn">购买</button>
+                </div>
+            </section>
+            <footer>
+                <ul>
+                    <li><a href="#">社区</a></li>
+                    <li><a href="#">团队</a></li>
+                    <li><a href="#">捐助</a></li>
+                </ul>
+                <span>CopyRight 2021，高达模玩</span>
+            </footer>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+</html>
