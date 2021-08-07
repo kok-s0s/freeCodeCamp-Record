@@ -2,7 +2,7 @@
  * @Author: kok-s0s
  * @Date: 2021-08-01 19:20:29
  * @LastEditors: kok-s0s
- * @LastEditTime: 2021-08-07 10:33:27
+ * @LastEditTime: 2021-08-07 10:34:55
  * @Description: React and Redux
 -->
 
@@ -573,5 +573,5 @@ ReactDOM.render(
 */
 
 // 只修改这一行下面的代码
-console.log('Now I konw React and Redux!');
+console.log('Now I know React and Redux!');
 ```
