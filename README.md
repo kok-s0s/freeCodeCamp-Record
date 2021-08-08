@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-08-04 17:31:19
+ * @LastEditTime: 2021-08-08 13:59:04
  * @Description: just Code!
 -->
 
@@ -86,6 +86,10 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 ### [Redux](./Notes/Front-End-Development-Libraries/Redux.md)
 
 ### [React-Redux](./Notes/Front-End-Development-Libraries/React-Redux.md)
+
+### Front End Development Libraries Projects
+
+#### [Random Quote Machine](./Notes/Front-End-Development-Libraries/Projects/Random-Quote-Machine/)
 
 ## Data Visualization
 
