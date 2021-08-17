@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-08-13 15:40:38
+ * @LastEditTime: 2021-08-17 18:00:48
  * @Description: just Code!
 -->
 
@@ -89,7 +89,15 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 
 ### Front End Development Libraries Projects
 
-#### [Random Quote Machine](./Notes/Front-End-Development-Libraries/Projects/Random-Quote-Machine/)
+#### [Build a Random Quote Machine](./Notes/Front-End-Development-Libraries/Projects/Random-Quote-Machine/)
+
+#### [Build a Markdown Previewer](https://markdown-previewer.pages.dev/)
+
+#### [Build a Drum Machine](https://durm-machine.pages.dev/)
+
+#### [Build a JavaScript Calculator](https://javascript-calculator.pages.dev/)
+
+#### [Build a 25 + 5 Clock](https://pomodoro-technique.pages.dev/)
 
 ## Data Visualization
 
