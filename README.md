@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-08-17 18:00:48
+ * @LastEditTime: 2021-09-09 19:26:45
  * @Description: just Code!
 -->
 
@@ -16,6 +16,8 @@ don't say so much, just show my code.
 [freeCodeCamp-Official-website](https://www.freecodecamp.org/)
 
 ## Responsive Web Design
+
+<details><summary>contents</summary>
 
 ### [Basic CSS](./Notes/Responsive-Web-Design/Basic-CSS.md)
 
@@ -39,9 +41,13 @@ don't say so much, just show my code.
 
 #### [Build a Technical Documentation Page](./Notes/Responsive-Web-Design/Projects/Technical-Documentation-Page)
 
+</details>
+
 ## JavaScript Algorithms and Data Structures 
 
 Files ==> [JS-AADS](./Notes/JS-AADS)
+
+<details><summary>contents</summary>
 
 ### [ES6](./Notes/JS-AADS/ES6.md)
 
@@ -71,9 +77,13 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 
 #### [Cash Register](./Notes/JS-AADS/Projects/Cash-Register.js)
 
+</details>
+
 ## Front End Development Libraries
 
 Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Libraries) 
+
+<details><summary>contents</summary>
 
 ### [Bootstrap](./Notes/Front-End-Development-Libraries/Bootstrap.md)
 
@@ -98,6 +108,8 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 #### [Build a JavaScript Calculator](https://javascript-calculator.pages.dev/)
 
 #### [Build a 25 + 5 Clock](https://pomodoro-technique.pages.dev/)
+
+</details>
 
 ## Data Visualization
 
