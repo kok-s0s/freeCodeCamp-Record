@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-09-10 15:34:43
+ * @LastEditTime: 2021-09-10 19:24:18
  * @Description: just Code!
 -->
 
@@ -45,8 +45,6 @@ don't say so much, just show my code.
 
 ## JavaScript Algorithms and Data Structures 
 
-Files ==> [JS-AADS](./Notes/JS-AADS)
-
 <details><summary>contents</summary>
 
 ### [ES6](./Notes/JS-AADS/ES6.md)
@@ -81,8 +79,6 @@ Files ==> [JS-AADS](./Notes/JS-AADS)
 
 ## Front End Development Libraries
 
-Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Libraries) 
-
 <details><summary>contents</summary>
 
 ### [Bootstrap](./Notes/Front-End-Development-Libraries/Bootstrap.md)
@@ -113,8 +109,6 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 
 ## Data Visualization
 
-Files ==> [Data-Visualization](./Notes/Data-Visualization) 
-
 <details><summary>contents</summary>
 
 ### [Data Visualization with D3](./Notes/Data-Visualization/Data-Visualization-with-D3.md)
@@ -125,6 +119,10 @@ Files ==> [Data-Visualization](./Notes/Data-Visualization)
 
 ## APIs and Microservices
 
+<details><summary>contents</summary>
+
 ### [Managing Package with NPM](./Notes/APIs-and-Microservices/Managing-Package-with-NPM.md)
 
 ### [Basic Node and Express](./Notes/APIs-and-Microservices/Basic-Node-and-Express.md)
+
+</details>
