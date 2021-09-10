@@ -1,7 +1,7 @@
 <!--
  * @Author: kok-s0s
  * @Date: 2021-05-30 22:58:39
- * @LastEditTime: 2021-09-09 19:26:45
+ * @LastEditTime: 2021-09-10 15:34:43
  * @Description: just Code!
 -->
 
@@ -115,7 +115,13 @@ Files ==> [Front-End-Development-Libraries](./Notes/Front-End-Development-Librar
 
 Files ==> [Data-Visualization](./Notes/Data-Visualization) 
 
+<details><summary>contents</summary>
+
 ### [Data Visualization with D3](./Notes/Data-Visualization/Data-Visualization-with-D3.md)
+
+### [JSON APIs and AJAX](./Notes/Data-Visualization/JSON-APIs-and-AJAX.md)
+
+</details>
 
 ## APIs and Microservices
 
